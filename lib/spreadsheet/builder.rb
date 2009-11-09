@@ -115,7 +115,7 @@ module Spreadsheet
     end
   
     def numeric_cell(*args)
-      cell :numeric, *args
+      cell :float, *args
     end
   
     def date_cell(*args)
@@ -287,10 +287,11 @@ module Spreadsheet
             xml.tag! 'style:table-cell-properties', 'style:text-align-source' => 'fix'
           end
       
-          # xml.style :style, 'style:name' => 'numeric', 'style:family' => 'table-cell', 'style:data-style-name' => 'numeric' do
-          #   xml.style :'table-cell-properties', 'style:text-align-source' => 'fix'
-          #   xml.style :'paragraph-properties', 'fo:text-align' => 'right'
-          # end
+          xml.tag! 'style:style', 'style:name' => 'numeric', 'style:family' => 'table-cell', 'style:data-style-name' => 'numeric' do
+            xml.tag! 'style:table-cell-properties', 'style:text-align-source' => 'fix'
+            xml.tag! 'style:paragraph-properties', 'fo:text-align' => 'right'
+            xml.tag! 'number:number'
+          end
 
           [:date, :boolean].each do |value_type|
             xml.tag! 'style:style', 'style:name' => value_type, 'style:family' => 'table-cell', 'style:data-style-name' => value_type do
