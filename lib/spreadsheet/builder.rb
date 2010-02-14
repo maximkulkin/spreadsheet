@@ -268,21 +268,6 @@ module Spreadsheet
         'xmlns:fo' => 'urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0' do
         
         xml.tag! 'office:styles' do
-          xml.tag!('datastyle:text-style', 'style:name' => 'text') { xml.tag! 'datastyle:text-content' }
-          xml.tag! 'datastyle:date-style', 'style:name' => 'date', 'datastyle:format-source' => 'language' do
-            xml.tag! 'datastyle:day', 'datastyle:style' => 'long'
-            xml.tag! 'datastyle:text', {}, '.'
-            xml.tag! 'datastyle:month', 'datastyle:style' => 'long'
-            xml.tag! 'datastyle:text', {}, '.'
-            xml.tag! 'datastyle:year', 'datastyle:style' => 'long'
-          end
-          xml.tag! 'datastyle:boolean-style', 'style:name' => 'boolean' do
-            xml.tag! 'style:style-map', 'style:condition' => 'true', 'style:apply-style-name' => 'true'
-            xml.tag! 'style:style-map', 'style:condition' => 'false', 'style:apply-style-name' => 'false'
-          end
-          xml.tag!('datastyle:boolean-style', 'style:name' => 'true') { xml.tag! 'datastyle:text', {}, 'Да' }
-          xml.tag!('datastyle:boolean-style', 'style:name' => 'false') { xml.tag! 'datastyle:text', {}, 'Нет' }
-      
           xml.tag! 'style:style', 'style:name' => 'text', 'style:family' => 'table-cell', 'style:data-style-name' => 'text' do
             xml.tag! 'style:table-cell-properties', 'style:text-align-source' => 'fix'
           end
